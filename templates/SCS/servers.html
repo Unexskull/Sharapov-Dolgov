@@ -1,0 +1,116 @@
+{% extends 'SCS/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сервера</title>
+    {% block extra_styles %}
+    <link rel="stylesheet" href="{% static 'css/servers.css' %}">
+    {% endblock %}
+</head>
+<body>
+{% block content %}
+<div class="top-buttons">
+    <form method="get" action="{% url 'add_server' %}">
+        <button type="submit">Добавить сервер</button>
+    </form>
+    <form method="get" action="{% url 'list_servers' %}">
+        <button type="submit">Список серверов</button>
+    </form>
+    <form method="get" action="{% url 'ssh_parameters' %}">
+        <button type="submit">SSH</button>
+    </form>
+    <form method="get" action="{% url 'server_resource_graph' %}">
+        <button type="submit">График ресурсов</button>
+    </form>
+    <form method="get" action="{% url 'volumes' %}">
+        <button type="submit">Volumes</button>
+    </form>
+</div>
+{% if servers %}
+<h3>Список серверов</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Локация</th>
+                <th>IP</th>
+                <th>Статус</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for server in servers %}
+            <tr>
+                <td>{{ server.server_name }}</td>
+                <td>{{ server.server_connection_config.server_user_name }}</td>
+                <td>{{ server.server_connection_config.ip_address }}</td>
+                <td>{{ server.is_included }}</td>
+                <td>
+                    <!-- Кнопка для редактирования -->
+                    <form method="get" action="{% url 'edit_server' server.id %}" style="display:inline;">
+                        <button type="submit">Изменить</button>
+                    </form>
+                    <!-- Кнопка для удаления -->
+                    <form method="post" action="{% url 'delete_server' server.id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" onclick="return confirm('Вы уверены, что хотите удалить этот сервер?')">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Серверов нет.</p>
+{% endif %}
+{% if show_form %}
+<form name="add_server_form" method="post" action="{% url 'add_server' %}">
+    {% csrf_token %}
+    {{ form1.as_p }}
+    {{ form2.as_p }}
+    <button type="submit" name="action" value="add_server_view_submit">Сохранить сервер</button>
+</form>
+{% endif %}
+{% if show_ssh %}
+<h3>Список ssh конфигураций</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Имя пользователя</th>
+                <th>IP-адресс</th>
+                <th>SSH ключ</th>
+                <th>Пароль</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for param in ssh_parameters%}
+            <tr>
+                <td>{{ param.server_user_name }}</td>
+                <td>{{ param.ip_address }}</td>
+                <td>{{ param.ssh_public_key }}</td>
+                <td>{{ param.ssh_password }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+{% if show_graphic %}
+<div class="canvas-container">
+    {% for server in servers_name %}
+        <h4>{{ server.server_name }}</h4>
+        <canvas class="server-canvas" id="cpuLoadCanvas{{ server.id }}" width="300" height="300" data-server-id="{{ server.id }}"></canvas>
+        <canvas class="server-canvas" id="memoryLoadCanvas{{ server.id }}" width="300" height="300" data-server-id="{{ server.id }}"></canvas>
+        <canvas class="server-canvas" id="diskLoadCanvas{{ server.id }}" width="300" height="300" data-server-id="{{ server.id }}"></canvas>
+        <canvas class="server-canvas" id="internetSpeedCanvas{{ server.id }}" width="300" height="300" data-server-id="{{ server.id }}"></canvas>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}
+{% block extra_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
+</body>
+</html>

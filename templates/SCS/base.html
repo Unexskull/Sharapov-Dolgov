@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Главная{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_styles %}
+    {% endblock %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h3>Меню</h3>
+            <ul>
+              <li><button type="button" onclick="loadPage('servers')">Серверы</button></li>
+              <li><button type="button" onclick="loadPage('account')">Аккаунт</button></li>
+              <li><button type="button" onclick="loadPage('support')">Поддержка</button></li>
+              <li><button type="button" onclick="loadPage('logout')">Выход</button></li>
+            </ul>
+        </div>
+
+        <!-- Контент -->
+        <div class="content" id="content">
+            {% block content %}
+                <p>Выберите раздел в боковом меню.</p>
+            {% endblock %}
+        </div>
+    </div>
+    <script>
+        function loadPage(page) {
+            $.ajax({
+                url: '/SCS/' + page + '/',
+                type: 'GET',
+                success: function (data) {
+                    $('#content').html(data);
+                },
+                error: function () {
+                    alert("Ошибка загрузки страницы " + page);
+                }
+            });
+        }
+    </script>
+{% block extra_scripts %}
+<!-- Ваши скрипты будут вставлены сюда -->
+{% endblock %}
+</body>
+</html>

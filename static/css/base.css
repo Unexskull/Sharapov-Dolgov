@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: white;
+    height: 100vh;
+}
+/* Колонка слева (Sidebar) */
+.sidebar {
+    width: 12%;
+    height: 100vh;
+    background-color: #015f5c;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.sidebar h3 {
+    font-size: 35px;
+    color: white;
+    text-align: center;
+    bottom: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 100px; /* Отступ между кнопками */
+}
+
+.sidebar button {
+    width: 100%;
+    background-color: #3d8482;
+    color: white;
+    border: 1px solid black;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sidebar button:hover {
+    background-color: #73b3b1;
+}

@@ -1,0 +1,59 @@
+/* Общие стили для страницы аккаунта */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 0;
+}
+
+.main-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.account-info {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.account-info p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.account-info p strong {
+    color: #333;
+}
+
+.account-info p:last-child {
+    margin-bottom: 0;
+}
+
+/* Стиль для заголовков */
+h1, .account-info p {
+    font-family: 'Arial', sans-serif;
+}
+
+/* Отступы и адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .main-container {
+        padding: 20px;
+    }
+    h1 {
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,28 @@
+{% extends 'SCS/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Информация о аккаунте</title>
+    {% block extra_styles %}
+    <link rel="stylesheet" href="{% static 'css/account.css' %}">
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    <div class="main-container">
+        <h1>Информация о вашем аккаунте</h1>
+        {% if user %}
+        <div class="account-info">
+            <p><strong>Имя пользователя:</strong> {{ user.username }}</p>
+            <p><strong>Электронная почта:</strong> {{ user.email }}</p>
+            <p><strong>Дата регистрации:</strong> {{ user.date_joined }}</p>
+            <p><strong>Последний вход:</strong> {{ user.last_login }}</p>
+        </div>
+        {% endif %}
+    </div>
+    {% endblock %}
+</body>
+</html>

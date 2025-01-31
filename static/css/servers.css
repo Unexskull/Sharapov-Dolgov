@@ -1,0 +1,197 @@
+/* Кнопки сверху */
+.top-buttons {
+    display: flex;
+    justify-content: space-around; /* Располагает кнопки равномерно */
+    align-items: center;
+    background-color: #fff;
+    padding: 15px;
+    margin-left: 12%;
+    margin-bottom: 20px; /* Отступ снизу */
+}
+
+/* Кнопки внутри top-buttons */
+.top-buttons button {
+    background-color: white; /* Белые кнопки */
+    color: black; /* Черный текст */
+    border: 2px solid #26bcb8; /* Бирюзовая граница */
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Эффект при наведении на кнопку */
+.top-buttons button:hover {
+    background-color: #26bcb8;
+    color: white;
+}
+
+/* Основной контейнер для контента */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Стилизация таблицы */
+.content table {
+    width: 70%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-left: 18%;
+    background-color: #2f3d3a;
+    color: #fff;
+}
+
+.content th, .content td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Заголовки таблицы */
+.content th {
+    background-color: #365756;
+    color: white;
+}
+
+/* Стили для строк таблицы */
+.content td {
+    background-color: #284241;
+    color: white;
+}
+
+/* Чередование цветов строк */
+.content tr:nth-child(even) td {
+    background-color: #365756;
+}
+
+/* Эффект при наведении на строку */
+.content tr:hover {
+    background-color: #3c4e4a;
+    cursor: pointer;
+}
+
+/* Заголовок страницы */
+.content h3 {
+    margin-left: 50%;
+    color: #000; /* Черный цвет */
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Сообщение, если серверов нет */
+.content p {
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Основные стили для формы */
+form[name="add_server_form"] {
+    max-width: 800px; /* Максимальная ширина формы */
+    margin: 0 auto; /* Центрирование формы по горизонтали */
+    padding: 20px;
+    background-color: #f4f4f4; /* Светлый фон */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень вокруг формы */
+}
+
+/* Заголовки формы */
+form[name="add_server_form"] h3 {
+    font-size: 24px;
+    color: #015f5c;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Входные поля */
+form[name="add_server_form"] input, form select, form textarea {
+    width: 100%; /* Ширина полей на всю ширину формы */
+    padding: 12px;
+    margin: 8px 0; /* Отступы сверху и снизу */
+    border-radius: 5px;
+    border: 1px solid #ccc; /* Светлая граница */
+    font-size: 16px;
+    background-color: #fff;
+    transition: border-color 0.3s;
+}
+
+/* Фокус на полях ввода */
+form[name="add_server_form"] input:focus, form select:focus, form textarea:focus {
+    border-color: #26bcb8; /* Бирюзовая граница при фокусе */
+    outline: none; /* Убираем стандартное обрамление */
+}
+
+/* Кнопка отправки формы */
+form[name="add_server_form"] button {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    color: white;
+    background-color: #26bcb8; /* Бирюзовый фон */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Эффект при наведении на кнопку */
+form[name="add_server_form"] button:hover {
+    background-color: #1a9c94; /* Темнее при наведении */
+}
+
+/* Сообщения об ошибках формы */
+form[name="add_server_form"] .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* Выравнивание для поля формы с подписью */
+form[name="add_server_form"] label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 8px;
+    display: block; /* Помещаем подписи над полями */
+}
+
+/* Стиль для контейнера формы с двумя полями */
+.form-container[name="add_server_form"] {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Контейнер для графиков */
+.canvas-container {
+    margin-left: 10%;
+    justify-content: space-around; /* Располагает кнопки равномерно */
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap; /* Позволяет графикам располагаться в несколько рядов, если их много */
+    justify-content: center; /* Центрирует элементы по горизонтали */
+    gap: 20px; /* Отступы между графиками */
+    padding: 10px; /* Отступы вокруг контейнера */
+    width: 90%;
+
+}
+
+/* Заголовки для каждого графика */
+.canvas-container h4 {
+    text-align: center; /* Центрирует заголовки */
+    font-size: 18px; /* Размер шрифта */
+    margin-bottom: 10px; /* Отступ снизу */
+    color: #333; /* Цвет текста */
+    width: 100%; /* Чтобы заголовки растягивались на всю ширину */
+}
+
+/* Стили для каждого графика */
+.canvas-container canvas {
+    border: 1px solid #ccc; /* Легкая граница для каждого канваса */
+    border-radius: 5px; /* Округлые углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень вокруг канваса */
+    width: 300px;
+    height: 300px;
+}
